@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MegaMart Pakistan - Shop everyday essentials, fashion, electronics and more.">
+<title>MegaMart Pakistan | Online Shopping</title>
+<style>
+:root{--ink:#17211b;--muted:#68756d;--green:#146b45;--green2:#0d5134;--lime:#d9f36a;--cream:#f7f8f3;--line:#e5e9e2;--white:#fff;--orange:#f5a623}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.topline{background:#103f2c;color:#e9f6ec;text-align:center;padding:9px 12px;font-size:12px;letter-spacing:.3px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.nav{max-width:1180px;margin:auto;padding:16px 20px;display:flex;align-items:center;gap:22px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:900;font-size:20px;white-space:nowrap}
+.logo-mark{width:36px;height:36px;border-radius:12px;background:var(--green);color:var(--lime);display:grid;place-items:center;font-size:20px}
+.search{flex:1;display:flex;background:#f2f5ef;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.search input{border:0;background:transparent;padding:13px 14px;width:100%;outline:none}
+.search button{border:0;background:var(--green);color:#fff;padding:0 18px;font-weight:700}
+.nav-actions{display:flex;gap:10px}
+.nav-btn{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 12px;color:var(--ink);font-weight:700}
+.nav-btn span{color:var(--green)}
+main{max-width:1180px;margin:auto;padding:24px 20px 60px}
+.hero{background:linear-gradient(110deg,#10452f,#1d7950);color:#fff;border-radius:24px;min-height:310px;padding:42px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:#ffffff12;right:8%;top:-100px}
+.eyebrow{color:var(--lime);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.04;margin:13px 0;max-width:590px}
+.hero p{color:#e0eee4;line-height:1.6;max-width:490px;margin-bottom:24px}
+.primary{background:var(--lime);color:#183b27;border:0;border-radius:10px;padding:13px 20px;font-weight:900}
+.hero-art{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;font-size:120px;filter:drop-shadow(0 18px 18px #001c1255)}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:34px 0 16px;gap:10px}
+.section-head h2{margin:0;font-size:25px}.section-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.category{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px 8px;text-align:center;transition:.2s}
+.category:hover{transform:translateY(-3px);border-color:#9bbba5}
+.category .emoji{font-size:30px;display:block;margin-bottom:8px}.category strong{font-size:12px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:99px;padding:8px 13px;font-size:12px;font-weight:700}
+.chip.active{background:var(--green);color:#fff;border-color:var(--green)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.product{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative}
+.product-visual{height:155px;display:grid;place-items:center;background:linear-gradient(145deg,#f1f5ed,#e5eee2);font-size:65px}
+.heart{position:absolute;right:10px;top:10px;border:0;background:#fff;border-radius:50%;width:34px;height:34px;font-size:18px}
+.product-info{padding:14px}.tag{font-size:10px;color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.product h3{font-size:14px;margin:7px 0 5px}.desc{font-size:11px;color:var(--muted);min-height:28px}
+.price-row{display:flex;align-items:center;justify-content:space-between;margin-top:13px}
+.price{font-weight:900;color:var(--green);font-size:16px}
+.add{border:0;background:var(--green);color:#fff;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:800}
+.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:15px}
+.info-strip{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.info{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;gap:12px;align-items:center}
+.info b{display:block;font-size:13px}.info small{color:var(--muted);font-size:11px}
+footer{background:#103f2c;color:#e7f2e9;padding:35px 20px}
+.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{color:#c0d5c7;font-size:12px;line-height:1.6;max-width:430px}
+footer a{color:var(--lime);text-decoration:none}
+.overlay{position:fixed;inset:0;background:#10221888;z-index:30;display:none;justify-content:flex-end}
+.overlay.show{display:flex}
+.drawer{background:#fff;width:min(440px,100%);height:100%;padding:22px;overflow:auto}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:15px}
+.close{border:0;background:#f0f3ee;border-radius:9px;padding:8px 11px}
+.cart-line{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}
+.cart-emoji{width:48px;height:48px;border-radius:12px;background:#f0f4ec;display:grid;place-items:center;font-size:25px}
+.cart-line .grow{flex:1}.cart-line b{font-size:13px}.cart-line small{display:block;color:var(--muted);margin-top:4px}
+.qty{display:flex;gap:8px;align-items:center}.qty button{border:1px solid var(--line);background:#fff;border-radius:6px;width:25px;height:25px}
+.total{display:flex;justify-content:space-between;font-weight:900;font-size:18px;padding:18px 0}
+.checkout{width:100%;padding:14px;background:var(--green);color:#fff;border:0;border-radius:10px;font-weight:900}
+.modal{position:fixed;inset:0;background:#10221888;z-index:40;display:none;place-items:center;padding:15px}
+.modal.show{display:grid}.modal-card{background:#fff;border-radius:18px;padding:24px;width:min(480px,100%);max-height:90vh;overflow:auto}
+.modal-card h2{margin-top:0}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:12px;font-weight:800}.field input,.field textarea,.field select{border:1px solid var(--line);border-radius:9px;padding:12px;width:100%;background:#fff}
+.notice{background:#f1f7e8;border:1px solid #dce9c9;padding:12px;border-radius:10px;font-size:12px;line-height:1.5;color:#39533d}
+@media(max-width:760px){.nav{flex-wrap:wrap;gap:12px;padding:12px 14px}.logo{font-size:18px}.search{order:3;flex-basis:100%}.nav-actions{margin-left:auto}.nav-btn{padding:9px}.hero{grid-template-columns:1fr;padding:28px 23px;min-height:0}.hero-art{font-size:75px;justify-content:flex-end;margin-top:-10px}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr);gap:10px}.product-visual{height:125px;font-size:52px}.product-info{padding:11px}.section-head{align-items:start;flex-direction:column}.info-strip{grid-template-columns:1fr}main{padding:16px 13px 40px}}
+@media(min-width:761px) and (max-width:980px){.products{grid-template-columns:repeat(3,1fr)}.categories{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="topline">WELCOME TO MEGAMART PAKISTAN · SMART SHOPPING, EVERY DAY</div>
+<header>
+  <div class="nav">
+    <a class="logo" href="#"><span class="logo-mark">M</span><span>MegaMart <span style="color:var(--green)">Pakistan</span></span></a>
+    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products"><button type="submit">Search</button></form>
+    <div class="nav-actions">
+      <button class="nav-btn" id="wishBtn">♡ <span id="wishCount">0</span></button>
+      <button class="nav-btn" id="cartBtn">🛒 <span id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div><div class="eyebrow">Your everyday marketplace</div><h1>Everything you need. <span style="color:var(--lime)">One place.</span></h1><p>Discover useful finds across fashion, electronics, beauty and home essentials — with a smooth shopping experience made for Pakistan.</p><button class="primary" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Explore products&nbsp; →</button></div>
+    <div class="hero-art" aria-hidden="true">🛍️📦</div>
+  </section>
+  <div class="section-head"><div><h2>Shop by category</h2><p>Find what you are looking for</p></div></div>
+  <section class="categories" id="categories">
+    <button class="category" data-category="Fashion"><span class="emoji">👕</span><strong>Fashion</strong></button>
+    <button class="category" data-category="Electronics"><span class="emoji">🎧</span><strong>Electronics</strong></button>
+    <button class="category" data-category="Mobiles"><span class="emoji">📱</span><strong>Mobiles</strong></button>
+    <button class="category" data-category="Beauty"><span class="emoji">✨</span><strong>Beauty</strong></button>
+    <button class="category" data-category="Home"><span class="emoji">🏠</span><strong>Home</strong></button>
+    <button class="category" data-category="Grocery"><span class="emoji">🛒</span><strong>Grocery</strong></button>
+  </section>
+  <section id="shop">
+    <div class="section-head"><div><h2>Popular products</h2><p>Explore our sample collection</p></div><div class="filters" id="filters"><button class="chip active" data-filter="All">All</button><button class="chip" data-filter="Fashion">Fashion</button><button class="chip" data-filter="Electronics">Electronics</button><button class="chip" data-filter="Mobiles">Mobiles</button><button class="chip" data-filter="Beauty">Beauty</button><button class="chip" data-filter="Home">Home</button><button class="chip" data-filter="Grocery">Grocery</button></div></div>
+    <div class="products" id="products"></div>
+  </section>
+  <section class="info-strip">
+    <div class="info"><span style="font-size:25px">🚚</span><div><b>Delivery across Pakistan</b><small>Delivery details confirmed with your order</small></div></div>
+    <div class="info"><span style="font-size:25px">💳</span><div><b>Easypaisa payment instructions</b><small>Manual payment confirmation required</small></div></div>
+    <div class="info"><span style="font-size:25px">🔒</span><div><b>Shopping support</b><small>Contact us for help with your order</small></div></div>
+  </section>
+</main>
+<footer><div class="footer-inner"><div><a class="logo" href="#" style="color:#fff"><span class="logo-mark">M</span>MegaMart Pakistan</a><p>Your everyday marketplace. Browse our sample collection and contact the store to confirm availability, delivery and payment details.</p></div><div><b>Customer support</b><p>Email: hello@megamartpakistan.example<br>Phone: Add your store phone number</p></div><div><b>Payment</b><p>Easypaisa instructions will be provided by the store after order submission. This demo does not process payments automatically.</p></div></div></footer>
+
+<div class="overlay" id="cartOverlay"><div class="drawer"><div class="drawer-head"><h2>Your cart</h2><button class="close" id="closeCart">Close ✕</button></div><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">Rs. 0</span></div><button class="checkout" id="checkoutBtn">Continue to checkout</button><p style="font-size:11px;color:var(--muted)">Demo store: your order is not sent to a real seller until you connect an order system.</p></div></div>
+<div class="overlay" id="wishOverlay"><div class="drawer"><div class="drawer-head"><h2>Your wishlist</h2><button class="close" id="closeWish">Close ✕</button></div><div id="wishItems"></div></div></div>
+<div class="modal" id="checkoutModal"><div class="modal-card"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Checkout</h2><button class="close" id="closeCheckout">Close ✕</button></div><div class="notice"><b>Easypaisa advance payment</b><br>This is a demo checkout. Add your official Easypaisa account details before accepting real orders. Do not send money to unverified numbers.</div><form id="orderForm">
+<div class="field"><label for="customerName">Full name</label><input id="customerName" required placeholder="Your name"></div>
+<div class="field"><label for="customerPhone">Mobile number</label><input id="customerPhone" required inputmode="tel" placeholder="03XXXXXXXXX"></div>
+<div class="field"><label for="customerAddress">Delivery address</label><textarea id="customerAddress" required rows="3" placeholder="House, street, area, city"></textarea></div>
+<div class="field"><label for="payment">Payment method</label><select id="payment"><option>Easypaisa advance payment (instructions to be provided)</option></select></div>
+<button class="checkout" type="submit">Review order</button></form><p id="orderMessage" style="font-size:12px;color:var(--green);line-height:1.5"></p></div></div>
+<script>
+const products=[
+{id:1,name:"Everyday Cotton T-Shirt",category:"Fashion",price:1499,emoji:"👕",desc:"Comfortable casual wear"},
+{id:2,name:"Wireless Headphones",category:"Electronics",price:3299,emoji:"🎧",desc:"Enjoy your favourite sound"},
+{id:3,name:"Smartphone",category:"Mobiles",price:28999,emoji:"📱",desc:"A sample mobile product"},
+{id:4,name:"Daily Care Beauty Set",category:"Beauty",price:1899,emoji:"🧴",desc:"Everyday personal care"},
+{id:5,name:"Modern Table Lamp",category:"Home",price:2499,emoji:"💡",desc:"A warm touch for your room"},
+{id:6,name:"Kitchen Storage Set",category:"Home",price:1199,emoji:"🍱",desc:"Keep your kitchen organised"},
+{id:7,name:"Premium Grocery Basket",category:"Grocery",price:2199,emoji:"🧺",desc:"Everyday pantry essentials"},
+{id:8,name:"Classic Sneakers",category:"Fashion",price:3999,emoji:"👟",desc:"A versatile everyday pair"}
+];
+let cart=JSON.parse(localStorage.getItem("mm_cart")||"[]");
+let wishlist=JSON.parse(localStorage.getItem("mm_wish")||"[]");
+let currentFilter="All",query="";
+const money=n=>"Rs. "+Number(n).toLocaleString("en-PK");
+function save(){localStorage.setItem("mm_cart",JSON.stringify(cart));localStorage.setItem("mm_wish",JSON.stringify(wishlist));updateCounts()}
+function updateCounts(){document.getElementById("cartCount").textContent=cart.reduce((a,b)=>a+b.qty,0);document.getElementById("wishCount").textContent=wishlist.length}
+function renderProducts(){
+ const list=products.filter(p=>(currentFilter==="All"||p.category===currentFilter)&&(p.name.toLowerCase().includes(query)||p.category.toLowerCase().includes(query)));
+ document.getElementById("products").innerHTML=list.length?list.map(p=>`<article class="product"><button class="heart" onclick="toggleWish(${p.id})" aria-label="Add to wishlist">${wishlist.includes(p.id)?"♥":"♡"}</button><div class="product-visual">${p.emoji}</div><div class="product-info"><div class="tag">${p.category}</div><h3>${p.name}</h3><div class="desc">${p.desc}</div><div class="price-row"><span class="price">${money(p.price)}</span><button class="add" onclick="addCart(${p.id})">Add +</button></div></div></article>`).join(""):'<div class="empty">No products found. Try another search or category.</div>';
+}
+function addCart(id){const found=cart.find(x=>x.id===id);if(found)found.qty++;else cart.push({id,qty:1});save();renderCart();document.getElementById("cartOverlay").classList.add("show")}
+function toggleWish(id){wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];save();renderProducts();renderWishlist()}
+function renderCart(){
+ const box=document.getElementById("cartItems");
+ if(!cart.length){box.innerHTML='<div class="empty">Your cart is empty.</div>'}else{box.innerHTML=cart.map(x=>{const p=products.find(y=>y.id===x.id);return `<div class="cart-line"><div class="cart-emoji">${p.emoji}</div><div class="grow"><b>${p.name}</b><small>${money(p.price)} each</small></div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button>${x.qty}<button onclick="changeQty(${p.id},1)">+</button></div></div>`}).join("")}
+ document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0));
+}
+function changeQty(id,d){const x=cart.find(y=>y.id===id);if(x)x.qty+=d;cart=cart.filter(y=>y.qty>0);save();renderCart()}
+function renderWishlist(){const box=document.getElementById("wishItems");const list=products.filter(p=>wishlist.includes(p.id));box.innerHTML=list.length?list.map(p=>`<div class="cart-line"><div class="cart-emoji">${p.emoji}</div><div class="grow"><b>${p.name}</b><small>${money(p.price)}</small></div><button class="add" onclick="addCart(${p.id})">Add</button></div>`).join(""):'<div class="empty">Your wishlist is empty.</div>'}
+document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();query=document.getElementById("searchInput").value.trim().toLowerCase();renderProducts();document.getElementById("shop").scrollIntoView({behavior:"smooth"})});
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;currentFilter=b.dataset.filter;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x===b));renderProducts()});
+document.getElementById("categories").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(!b)return;currentFilter=b.dataset.category;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x.dataset.filter===currentFilter));renderProducts();document.getElementById("shop").scrollIntoView({behavior:"smooth"})});
+document.getElementById("cartBtn").onclick=()=>{renderCart();document.getElementById("cartOverlay").classList.add("show")};
+document.getElementById("wishBtn").onclick=()=>{renderWishlist();document.getElementById("wishOverlay").classList.add("show")};
+document.getElementById("closeCart").onclick=()=>document.getElementById("cartOverlay").classList.remove("show");
+document.getElementById("closeWish").onclick=()=>document.getElementById("wishOverlay").classList.remove("show");
+document.getElementById("checkoutBtn").onclick=()=>{if(!cart.length){alert("Your cart is empty.");return}document.getElementById("checkoutModal").classList.add("show")};
+document.getElementById("closeCheckout").onclick=()=>document.getElementById("checkoutModal").classList.remove("show");
+document.getElementById("orderForm").addEventListener("submit",e=>{e.preventDefault();const order={name:document.getElementById("customerName").value,phone:document.getElementById("customerPhone").value,address:document.getElementById("customerAddress").value,items:cart,total:cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0)};document.getElementById("orderMessage").textContent="Order details prepared for "+order.name+". This demo does not transmit or save orders to a store. Connect a secure order backend before going live.";});
+renderProducts();renderCart();renderWishlist();updateCounts();
+</script>
+</body>
+</html>
